@@ -1,0 +1,21 @@
+config_version=5
+
+[application]
+
+config/name="jogo de chao é lava"
+run/main_scene="uid://b8n0i3ghaopon"
+config/features=PackedStringArray("4.6", "Forward Plus")
+config/icon="res://assets/icon.svg"
+
+[display]
+
+window/size/viewport_width=840
+window/size/viewport_height=970
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"

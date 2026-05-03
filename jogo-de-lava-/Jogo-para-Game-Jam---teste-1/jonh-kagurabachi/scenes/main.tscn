@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://b8n0i3ghaopon"]
+
+[ext_resource type="Script" uid="uid://dcnty8bagmwx7" path="res://scripts/heroi.gd" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://dc4mkihgrya2k" path="res://scripts/main.gd" id="1_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://ihk2eg5qkfke" path="res://assets/icon.svg" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://de1saokanni35" path="res://scenes/plate.tscn" id="4_jyhfs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhfs"]
+size = Vector2(128, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
+size = Vector2(256, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
+size = Vector2(2, 968.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
+size = Vector2(840, 32)
+
+[node name="Main" type="Node2D" unique_id=2047773791]
+script = ExtResource("1_jyhfs")
+
+[node name="Heroi" type="CharacterBody2D" parent="." unique_id=62894961]
+position = Vector2(409, -112)
+script = ExtResource("1_0wfyh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Heroi" unique_id=1819265830]
+texture = ExtResource("2_sugp2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Heroi" unique_id=1746189741]
+shape = SubResource("RectangleShape2D_jyhfs")
+
+[node name="Area2D" type="Area2D" parent="Heroi" unique_id=1758009870]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Heroi/Area2D" unique_id=736977765]
+position = Vector2(-1, -8)
+shape = SubResource("RectangleShape2D_tefeu")
+
+[node name="Camera2D" type="Camera2D" parent="Heroi" unique_id=198520376]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1602076345]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=341176245]
+position = Vector2(1, 485.75)
+shape = SubResource("RectangleShape2D_0wfyh")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2059313414]
+position = Vector2(421.00003, 955.5)
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2027046963]
+shape = SubResource("RectangleShape2D_tbgi4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=378837879]
+scale = Vector2(6.5625, 0.2578125)
+texture = ExtResource("2_sugp2")
+
+[node name="Timer" type="Timer" parent="." unique_id=1316571614]
+wait_time = 7.0
+autostart = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1476483947]
+position = Vector2(687, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1033086157]
+position = Vector2(152, 496)
+shape = SubResource("RectangleShape2D_0wfyh")
+
+[node name="Plate" parent="." unique_id=664769850 instance=ExtResource("4_jyhfs")]
+position = Vector2(400, 36)
+
+[connection signal="game_over" from="Heroi" to="." method="_on_heroi_game_over"]
+[connection signal="area_entered" from="Heroi/Area2D" to="Plate" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Area2D" to="Heroi" method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="Plate" method="_on_timer_timeout"]
