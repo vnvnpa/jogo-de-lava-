@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b1nbwlmyoc68e"]
+
+[node name="Control" type="Control" unique_id=808009321]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VFlowContainer" type="VFlowContainer" parent="." unique_id=1778524473]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="VFlowContainer" unique_id=2123803454]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VFlowContainer" unique_id=177622945]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Nome jogo"
